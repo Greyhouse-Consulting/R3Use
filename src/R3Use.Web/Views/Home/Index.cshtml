@@ -1,0 +1,23 @@
+﻿@model IList<NPocoLab.Web.ProspectViewModel>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>name</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var p in Model)
+    {
+        <tr>
+            <td>@p.Id</td>
+            <td>@p.Name</td>
+        </tr>
+    }        
+    </tbody>
+</table>
