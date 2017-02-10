@@ -1,100 +1,34 @@
-﻿using System;
-using System.Data.SqlClient;
-using System.Threading.Tasks;
-using Microsoft.Data.Sqlite;
+﻿using System.Threading.Tasks;
 using NPoco.Core;
 using NPoco.Core.Repository;
-using NPoco.FluentMappings;
 using Xunit;
 
 namespace NPoco.Integration.Tests
 {
-    public class RepositoryItegrationTests
+    public class RepositoryItegrationTests : SqliteIntegration
     {
-        private SqliteConnection Connection { get; set; }
-
-
         [Fact]
         public async Task Should_Store_And_Load_One_Entity()
         {
-            EnsureSharedConnectionConfigured();
-            RecreateDataBase();
+            Setup();
 
-            var fluentConfig = FluentMappingConfiguration.Configure(new NPocoLabMappings(true));
-
-            var dbFactory = DatabaseFactory.Config(x =>
+            using (var db = CreateDatabase())
             {
-                x.UsingDatabase(() => new Database(Connection));
-                x.WithFluentConfig(fluentConfig);
-            });
+                var repo = new ProspectRepository(db);
 
-            var db = dbFactory.GetDatabase();
+                await repo.Add(new Prospect
+                {
+                    Id = 200,
+                    Name = "Name"
+                });
 
-            var repo = new ProspectRepository(db);
+                var i = await repo.GetAsync(200);
 
-            await repo.Add(new Prospect
-            {
-                Id = 200,
-                Name = "Name"
-            });
+                Assert.Equal(200, i.Id);
+                Assert.Equal("Name", i.Name);
+            }
 
-            var i = await repo.GetAsync(200);
-
-            Assert.Equal(200, i.Id);
-            Assert.Equal("Name", i.Name);
-
-            CleanupDataBase();
-            Dispose();
+            TearDown();
         }
-
-        public void EnsureSharedConnectionConfigured()
-        {
-            if (Connection != null)
-                return;
-            
-            //lock (_syncRoot)
-            //{
-               
-                Connection = new SqliteConnection("Data Source=:memory:");
-                Connection.Open();
-            //}
-        }
-        public  void RecreateDataBase()
-        {
-            Console.WriteLine("----------------------------");
-            Console.WriteLine("Using SQLite In-Memory DB   ");
-            Console.WriteLine("----------------------------");
-
-
-            var cmd = Connection.CreateCommand();
-            cmd.CommandText = "CREATE TABLE prospects(Id INTEGER PRIMARY KEY AUTOINCREMENT, Name nvarchar(200));";
-            cmd.ExecuteNonQuery();
-
-
-            cmd.Dispose();
-        }
-
-        public void CleanupDataBase()
-        {
-
-            if (Connection == null) return;
-
-            var cmd = Connection.CreateCommand();
-
-            cmd.CommandText = "DROP TABLE prospects;";
-            cmd.ExecuteNonQuery();
-
-            cmd.Dispose();
-        }
-
-        public virtual void Dispose()
-        {
-            Console.WriteLine("Disposing connection...     ");
-
-            if (Connection == null) return;
-
-            Connection.Close();
-            Connection.Dispose();
-        }
-    }
+    }   
 }
