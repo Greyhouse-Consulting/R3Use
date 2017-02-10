@@ -44,29 +44,24 @@ namespace NPocoLab.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
-            var container = new ServiceContainer();
-            container.Register<IProspectRepository, ProspectRepository>();
-
-
 
             // Add framework services.
             services.AddMvc();
 
+            // Configure Mapster
             ConfigureMapster();
 
-            IAdapter adapter = new Adapter();
-
+            // Setup IoC
+            var container = new ServiceContainer();
+            container.Register<IProspectRepository, ProspectRepository>();
             container.RegisterInstance(CreateDatabaseInstance());
 
-            
+            IAdapter adapter = new Adapter();
             container.RegisterInstance(adapter);
 
             container.ScopeManagerProvider = new StandaloneScopeManagerProvider();
 
-
-
-            return container.CreateServiceProvider(services);
-            
+            return container.CreateServiceProvider(services);            
         }
 
         private IDatabase CreateDatabaseInstance()
