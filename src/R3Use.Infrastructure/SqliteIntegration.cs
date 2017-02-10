@@ -1,9 +1,10 @@
-﻿using Microsoft.Data.Sqlite;
-using System;
+﻿using System;
+using Microsoft.Data.Sqlite;
+using NPoco;
 using NPoco.FluentMappings;
 using R3Use.Core;
 
-namespace NPoco.Integration.Tests
+namespace R3Use.Infrastructure
 {
     public abstract class SqliteIntegration
     {

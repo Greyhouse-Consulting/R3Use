@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using R3Use.Core;
 using R3Use.Core.Repository;
+using R3Use.Infrastructure;
 using Xunit;
 
 namespace NPoco.Integration.Tests

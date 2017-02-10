@@ -1,4 +1,4 @@
-﻿{
+{
   "version": "1.0.0-*",
   "testRunner": "xunit",
   "dependencies": {
@@ -7,7 +7,8 @@
     "dotnet-test-xunit": "2.2.0-preview2-build1029",
     "R3Use.Core": "1.0.0-*",
     "NPoco": "3.4.8",
-    "Microsoft.Data.Sqlite": "1.1.0"
+    "Microsoft.Data.Sqlite": "1.1.0",
+    "R3Use.Infrastructure": "1.0.0-*"
   },
 
   "frameworks": {
