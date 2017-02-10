@@ -1,4 +1,6 @@
-﻿namespace NPoco.Core
+﻿using NPoco;
+
+namespace R3Use.Core
 {
     public interface IDbProvider
     {

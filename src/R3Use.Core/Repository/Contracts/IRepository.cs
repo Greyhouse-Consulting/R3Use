@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace NPoco.Core.Repository.Contracts
+namespace R3Use.Core.Repository.Contracts
 {
     public interface IRepository<T> where T : new()
     {

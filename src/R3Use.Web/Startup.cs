@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
 using System.Threading;
-using System.Threading.Tasks;
 using LightInject;
 using LightInject.Microsoft.DependencyInjection;
 using Mapster;
@@ -13,13 +10,13 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using NPoco;
-using NPoco.Core;
-using NPoco.Core.Repository;
-using NPoco.Core.Repository.Contracts;
 using NPoco.FluentMappings;
+using R3Use.Core;
+using R3Use.Core.Repository;
+using R3Use.Core.Repository.Contracts;
 using Serilog;
 
-namespace NPocoLab.Web
+namespace R3Use.Web
 {
     public class Startup
     {

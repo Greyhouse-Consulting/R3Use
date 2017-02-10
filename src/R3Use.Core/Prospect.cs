@@ -1,4 +1,4 @@
-﻿namespace NPoco.Core
+﻿namespace R3Use.Core
 {
     public class Prospect
     {

@@ -1,6 +1,6 @@
-﻿using NPoco.Core;
-using NPoco.Core.Repository.Contracts;
-using NSubstitute;
+﻿using NSubstitute;
+using R3Use.Core;
+using R3Use.Core.Repository.Contracts;
 using Xunit;
 
 namespace NPoco.Tests

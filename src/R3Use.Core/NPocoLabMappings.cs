@@ -1,6 +1,6 @@
 ﻿using NPoco.FluentMappings;
 
-namespace NPoco.Core
+namespace R3Use.Core
 {
     public class NPocoLabMappings  : Mappings
     {

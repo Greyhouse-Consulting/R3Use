@@ -1,4 +1,4 @@
-﻿namespace NPocoLab.Web
+﻿namespace R3Use.Web
 {
     public class ProspectViewModel
     {

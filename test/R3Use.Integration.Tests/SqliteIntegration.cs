@@ -1,7 +1,7 @@
 ﻿using Microsoft.Data.Sqlite;
 using System;
 using NPoco.FluentMappings;
-using NPoco.Core;
+using R3Use.Core;
 
 namespace NPoco.Integration.Tests
 {

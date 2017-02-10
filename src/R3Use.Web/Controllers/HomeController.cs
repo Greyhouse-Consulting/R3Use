@@ -2,10 +2,10 @@
 using System.Threading.Tasks;
 using Mapster;
 using Microsoft.AspNetCore.Mvc;
-using NPoco.Core;
-using NPoco.Core.Repository.Contracts;
+using R3Use.Core;
+using R3Use.Core.Repository.Contracts;
 
-namespace NPocoLab.Web.Controllers
+namespace R3Use.Web.Controllers
 {
     public class HomeController : Controller
     {

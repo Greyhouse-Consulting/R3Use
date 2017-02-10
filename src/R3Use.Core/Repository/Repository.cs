@@ -1,8 +1,9 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using NPoco.Core.Repository.Contracts;
+using NPoco;
+using R3Use.Core.Repository.Contracts;
 
-namespace NPoco.Core.Repository
+namespace R3Use.Core.Repository
 {
     public abstract class Repository<T> : IRepository<T>
         where T : new ()
