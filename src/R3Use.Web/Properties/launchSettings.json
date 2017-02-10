@@ -15,7 +15,8 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "NPocoLab.Web": {
+    "R3Use.Web": {
+      "executablePath": "R3Use.Web",
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "http://localhost:5000",
