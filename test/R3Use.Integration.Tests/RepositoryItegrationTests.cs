@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using R3Use.Core;
+using R3Use.Core.Entities;
 using R3Use.Core.Repository;
 using R3Use.Infrastructure;
 using Xunit;
@@ -17,7 +18,7 @@ namespace NPoco.Integration.Tests
             {
                 var repo = new ProspectRepository(db);
 
-                await repo.Add(new Prospect
+                await repo.Add(new Assignment
                 {
                     Id = 200,
                     Name = "Name"

@@ -12,6 +12,7 @@ using Microsoft.Extensions.Logging;
 using NPoco;
 using NPoco.FluentMappings;
 using R3Use.Core;
+using R3Use.Core.Entities;
 using R3Use.Core.Repository;
 using R3Use.Core.Repository.Contracts;
 using R3Use.Infrastructure;
@@ -94,7 +95,7 @@ namespace R3Use.Web
 
         private void ConfigureMapster()
         {
-            TypeAdapterConfig<Prospect, ProspectViewModel>
+            TypeAdapterConfig<Assignment, ProspectViewModel>
                 .NewConfig()
                 .Map(dest => dest.Name, src => src.Name)
                 .Map(dest => dest.Id, src => src.Id)

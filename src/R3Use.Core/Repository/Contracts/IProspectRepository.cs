@@ -1,6 +1,8 @@
-﻿namespace R3Use.Core.Repository.Contracts
+﻿using R3Use.Core.Entities;
+
+namespace R3Use.Core.Repository.Contracts
 {
-    public interface IProspectRepository : IRepository<Prospect>
+    public interface IProspectRepository : IRepository<Assignment>
     {
 
     }

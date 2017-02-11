@@ -1,6 +1,7 @@
 ﻿using NPoco.FluentMappings;
+using R3Use.Core.Entities;
 
-namespace R3Use.Core
+namespace R3Use.Infrastructure
 {
     public class NPocoLabMappings  : Mappings
     {
@@ -8,11 +9,11 @@ namespace R3Use.Core
         {
             var useAutoincrement = !testMode;
 
-            For<Prospect>().PrimaryKey(k => k.Id, useAutoincrement);
+            For<Assignment>().PrimaryKey(k => k.Id, useAutoincrement);
 
-            For<Prospect>().TableName("prospects");
+            For<Assignment>().TableName("prospects");
 
-            For<Prospect>().Columns(x =>
+            For<Assignment>().Columns(x =>
             {
                 x.Column(c => c.Name);
             });

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using NPoco;
+using R3Use.Core.Entities;
 using R3Use.Core.Repository.Contracts;
 
 namespace R3Use.Core.Repository
@@ -20,7 +21,7 @@ namespace R3Use.Core.Repository
             return await _database.SingleByIdAsync<T>(id);
         }
 
-        public virtual async Task Add(Prospect prospect)
+        public virtual async Task Add(Assignment prospect)
         {
 
             await _database.InsertAsync(prospect);

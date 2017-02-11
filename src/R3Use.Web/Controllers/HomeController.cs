@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Mapster;
 using Microsoft.AspNetCore.Mvc;
 using R3Use.Core;
+using R3Use.Core.Entities;
 using R3Use.Core.Repository.Contracts;
 
 namespace R3Use.Web.Controllers
@@ -22,7 +23,7 @@ namespace R3Use.Web.Controllers
         {
             var prospects = await _prospectRepository.AllAsync();
 
-            var viewModels =_adapter.Adapt<IList<Prospect>, IList<ProspectViewModel>>(prospects);
+            var viewModels =_adapter.Adapt<IList<Assignment>, IList<ProspectViewModel>>(prospects);
 
             return View(viewModels);
         }

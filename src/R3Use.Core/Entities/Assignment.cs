@@ -1,6 +1,6 @@
-﻿namespace R3Use.Core
+﻿namespace R3Use.Core.Entities
 {
-    public class Prospect
+    public class Assignment
     {
         public int Id { get; set; }
 
