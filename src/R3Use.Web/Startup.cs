@@ -16,6 +16,7 @@ using R3Use.Core.Entities;
 using R3Use.Core.Repository;
 using R3Use.Core.Repository.Contracts;
 using R3Use.Infrastructure;
+using R3Use.Web.ViewModels;
 using Serilog;
 
 namespace R3Use.Web
@@ -36,14 +37,18 @@ namespace R3Use.Web
                 .Enrich.FromLogContext()
                 .WriteTo.ColoredConsole()
                 .CreateLogger();
+
+            HostingEnvironment = env;
         }
 
         public IConfigurationRoot Configuration { get; }
+        private IHostingEnvironment HostingEnvironment { get; set; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public IServiceProvider ConfigureServices(IServiceCollection services, IHostingEnvironment env)
+        public IServiceProvider ConfigureServices(IServiceCollection services)
         {
 
+            
             // Add framework services.
             services.AddMvc();
 
@@ -52,8 +57,8 @@ namespace R3Use.Web
 
             // Setup IoC
             var container = new ServiceContainer();
-            container.Register<IProspectRepository, ProspectRepository>();
-            container.RegisterInstance(CreateDatabaseInstance(env));
+            container.Register<IAssignmentRepository, AssignmentRepository>();
+            container.RegisterInstance(CreateDatabaseInstance(HostingEnvironment));
 
             IAdapter adapter = new Adapter();
             container.RegisterInstance(adapter);
@@ -95,11 +100,18 @@ namespace R3Use.Web
 
         private void ConfigureMapster()
         {
-            TypeAdapterConfig<Assignment, ProspectViewModel>
+            TypeAdapterConfig<Assignment, AssignmentViewModel>
                 .NewConfig()
                 .Map(dest => dest.Name, src => src.Name)
                 .Map(dest => dest.Id, src => src.Id)
                 .Compile();
+
+            TypeAdapterConfig<AssignmentViewModel, Assignment>
+                .NewConfig()
+                .Map(dest => dest.Name, src => src.Name)
+                .Map(dest => dest.Id, src => src.Id)
+                .Compile();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

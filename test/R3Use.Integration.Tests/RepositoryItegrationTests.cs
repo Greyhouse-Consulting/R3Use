@@ -16,7 +16,7 @@ namespace NPoco.Integration.Tests
 
             using (var db = CreateDatabase())
             {
-                var repo = new ProspectRepository(db);
+                var repo = new AssignmentRepository(db);
 
                 await repo.Add(new Assignment
                 {

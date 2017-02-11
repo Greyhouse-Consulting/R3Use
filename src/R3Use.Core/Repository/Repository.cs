@@ -21,15 +21,20 @@ namespace R3Use.Core.Repository
             return await _database.SingleByIdAsync<T>(id);
         }
 
-        public virtual async Task Add(Assignment prospect)
+        public virtual async Task Add(Assignment entity)
         {
 
-            await _database.InsertAsync(prospect);
+            await _database.InsertAsync(entity);
         }
 
         public virtual async Task<IList<T>> AllAsync()
         {
             return await _database.FetchAsync<T>();
+        }
+
+        public async Task SaveAsync(T entity)
+        {
+            await _database.InsertAsync(entity);
         }
     }
 }

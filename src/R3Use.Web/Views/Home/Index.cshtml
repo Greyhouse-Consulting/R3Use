@@ -1,5 +1,5 @@
 ﻿@using R3Use.Web
-@model IList<R3Use.Web.ProspectViewModel>
+@using R3Use.Web.ViewModels
 
 @{
     ViewData["Title"] = "Home Page";
@@ -13,12 +13,19 @@
     </tr>
     </thead>
     <tbody>
-    @foreach (var p in Model)
+    @*@foreach (var p in Model)
     {
         <tr>
             <td>@p.Id</td>
             <td>@p.Name</td>
         </tr>
-    }        
+    }*@        
+        
+ 
+
     </tbody>
 </table>
+
+
+<a asp-controller="Assignment"
+   asp-action="Create">Create new assignment</a>

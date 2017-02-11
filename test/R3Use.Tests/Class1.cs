@@ -13,7 +13,7 @@ namespace NPoco.Tests
         public async void Should_Create_Mock()
         {
             // Arrange 
-            var r = Substitute.For<IProspectRepository>();
+            var r = Substitute.For<IAssignmentRepository>();
 
             r.GetAsync(2).Returns(new Assignment { Id = 2, Name = "Test"});
 

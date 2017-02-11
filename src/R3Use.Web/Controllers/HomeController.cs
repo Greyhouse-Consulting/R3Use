@@ -5,25 +5,26 @@ using Microsoft.AspNetCore.Mvc;
 using R3Use.Core;
 using R3Use.Core.Entities;
 using R3Use.Core.Repository.Contracts;
+using R3Use.Web.ViewModels;
 
 namespace R3Use.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IProspectRepository _prospectRepository;
+        private readonly IAssignmentRepository _assignmentRepository;
         private readonly IAdapter _adapter;
 
-        public HomeController(IProspectRepository prospectRepository, IAdapter adapter)
+        public HomeController(IAssignmentRepository assignmentRepository, IAdapter adapter)
         {
-            _prospectRepository = prospectRepository;
+            _assignmentRepository = assignmentRepository;
             _adapter = adapter;
         }
 
         public async Task<IActionResult> Index()
         {
-            var prospects = await _prospectRepository.AllAsync();
+            var prospects = await _assignmentRepository.AllAsync();
 
-            var viewModels =_adapter.Adapt<IList<Assignment>, IList<ProspectViewModel>>(prospects);
+            var viewModels =_adapter.Adapt<IList<Assignment>, IList<AssignmentViewModel>>(prospects);
 
             return View(viewModels);
         }
