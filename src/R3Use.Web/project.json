@@ -1,4 +1,4 @@
-﻿{
+{
   "dependencies": {
     "Microsoft.NETCore.App": {
       "version": "1.1.0",
@@ -28,7 +28,8 @@
     "Serilog.Sinks.ColoredConsole": "2.0.0",
     "Serilog.Extensions.Logging": "1.3.1",
     "LightInject": "5.0.1",
-    "Serilog": "2.4.0"
+    "Serilog": "2.4.0",
+    "R3Use.Infrastructure": "1.0.0-*"
   },
 
   "tools": {

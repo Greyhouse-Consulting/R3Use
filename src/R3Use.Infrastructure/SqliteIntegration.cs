@@ -6,7 +6,7 @@ using R3Use.Core;
 
 namespace R3Use.Infrastructure
 {
-    public abstract class SqliteIntegration
+    public  class SqliteIntegration
     {
 
 
@@ -14,7 +14,7 @@ namespace R3Use.Infrastructure
 
 
 
-        protected IDatabase CreateDatabase()
+        public Database CreateDatabase()
         {
             var fluentConfig = FluentMappingConfiguration.Configure(new NPocoLabMappings(true));
 

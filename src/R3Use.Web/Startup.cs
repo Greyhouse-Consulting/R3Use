@@ -14,6 +14,7 @@ using NPoco.FluentMappings;
 using R3Use.Core;
 using R3Use.Core.Repository;
 using R3Use.Core.Repository.Contracts;
+using R3Use.Infrastructure;
 using Serilog;
 
 namespace R3Use.Web
@@ -39,7 +40,7 @@ namespace R3Use.Web
         public IConfigurationRoot Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public IServiceProvider ConfigureServices(IServiceCollection services)
+        public IServiceProvider ConfigureServices(IServiceCollection services, IHostingEnvironment env)
         {
 
             // Add framework services.
@@ -51,7 +52,7 @@ namespace R3Use.Web
             // Setup IoC
             var container = new ServiceContainer();
             container.Register<IProspectRepository, ProspectRepository>();
-            container.RegisterInstance(CreateDatabaseInstance());
+            container.RegisterInstance(CreateDatabaseInstance(env));
 
             IAdapter adapter = new Adapter();
             container.RegisterInstance(adapter);
@@ -61,15 +62,30 @@ namespace R3Use.Web
             return container.CreateServiceProvider(services);            
         }
 
-        private IDatabase CreateDatabaseInstance()
+        private IDatabase CreateDatabaseInstance(IHostingEnvironment env)
         {
             var fluentConfig = FluentMappingConfiguration.Configure(new NPocoLabMappings());
 
+            Database database;
+            if (env.IsDevelopment())
+            {
+                var s = new SqliteIntegration();
+                s.EnsureSharedConnectionConfigured();
+                database = s.CreateDatabase();
+
+                s.RecreateDataBase();
+            }
+            else
+            {
+                database = new Database("Server=localhost;Database=npoco;Trusted_Connection=True;", DatabaseType.SqlServer2012,
+                    SqlClientFactory.Instance);
+            }
+            
             var dbFactory = DatabaseFactory.Config(x =>
             {
 
                 //x.UsingDatabase(() => new Database(new SqlConnection("Server=localhost;Database=npoco;Trusted_Connection=True;")));
-                x.UsingDatabase(() => new Database("Server=localhost;Database=npoco;Trusted_Connection=True;", DatabaseType.SqlServer2012, SqlClientFactory.Instance));
+                x.UsingDatabase(() => database);
                 x.WithFluentConfig(fluentConfig);
             });
 
