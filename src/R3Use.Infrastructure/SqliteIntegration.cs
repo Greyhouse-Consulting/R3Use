@@ -2,7 +2,6 @@
 using Microsoft.Data.Sqlite;
 using NPoco;
 using NPoco.FluentMappings;
-using R3Use.Core;
 
 namespace R3Use.Infrastructure
 {

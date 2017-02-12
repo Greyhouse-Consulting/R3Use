@@ -7,22 +7,24 @@
     ViewData["Title"] = "Home Page";
 }
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Name</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var p in Model)
-            {
+<div class="panel panel-default">
+    <table class="table table-striped">
+        <thead>
             <tr>
-                <td>@p.Id</td>
-                <td>@p.Name</td>
+                <th>Id</th>
+                <th>Name</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var p in Model)
+            {
+                <tr>
+                    <td>@p.Id</td>
+                    <td>@p.Name</td>
+                </tr>
+            }
+        </tbody>
+    </table>
 
 
+</div>
