@@ -1,26 +1,23 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.4
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{546BD70C-F457-4AAC-A4EF-BBA801ABFE95}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{98DB1389-39B7-4123-A45D-D662354932EF}"
-	ProjectSection(SolutionItems) = preProject
-		global.json = global.json
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{E7C8079C-6A80-409A-9647-6E1FD5E34303}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "R3Use.Web", "src\R3Use.Web\R3Use.Web.xproj", "{3B483895-8F25-4A02-A683-BCE04D621697}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "R3Use.Web", "src\R3Use.Web\R3Use.Web.csproj", "{3B483895-8F25-4A02-A683-BCE04D621697}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "R3Use.Core", "src\R3Use.Core\R3Use.Core.xproj", "{79B1339C-86DE-47EF-A4A4-F04B89116AFB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "R3Use.Core", "src\R3Use.Core\R3Use.Core.csproj", "{79B1339C-86DE-47EF-A4A4-F04B89116AFB}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "R3Use.Tests", "test\R3Use.Tests\R3Use.Tests.xproj", "{7D2559D3-D077-47ED-B167-4F7EA5B05283}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "R3Use.Tests", "test\R3Use.Tests\R3Use.Tests.csproj", "{7D2559D3-D077-47ED-B167-4F7EA5B05283}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "R3Use.Integration.Tests", "test\R3Use.Integration.Tests\R3Use.Integration.Tests.xproj", "{0B4D23A8-DD95-47BA-9531-805909EC7644}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "R3Use.Integration.Tests", "test\R3Use.Integration.Tests\R3Use.Integration.Tests.csproj", "{0B4D23A8-DD95-47BA-9531-805909EC7644}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "R3Use.Infrastructure", "src\R3Use.Infrastructure\R3Use.Infrastructure.xproj", "{51F9DD64-9814-45E2-8914-7669849F1DE1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "R3Use.Infrastructure", "src\R3Use.Infrastructure\R3Use.Infrastructure.csproj", "{51F9DD64-9814-45E2-8914-7669849F1DE1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

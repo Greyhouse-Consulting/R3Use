@@ -10,6 +10,6 @@ namespace R3Use.Core.Repository.Contracts
 
         Task<IList<T>> AllAsync();
 
-        Task SaveAsync(T assignment);
+        Task AddAsync(T assignment);
     }
 }

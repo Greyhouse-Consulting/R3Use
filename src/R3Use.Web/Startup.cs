@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Threading;
 using LightInject;
@@ -6,6 +7,7 @@ using LightInject.Microsoft.DependencyInjection;
 using Mapster;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -47,7 +49,6 @@ namespace R3Use.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
-
             
             // Add framework services.
             services.AddMvc();
@@ -139,7 +140,6 @@ namespace R3Use.Web
             });
         }
     }
-
 
     internal class StandaloneScopeManagerProvider : ScopeManagerProvider
     {

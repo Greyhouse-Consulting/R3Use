@@ -1,6 +1,9 @@
 using System.Collections.Generic;
+using System.Reflection;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using NPoco;
+using NPoco.FluentMappings;
 using R3Use.Core.Entities;
 using R3Use.Core.Repository.Contracts;
 
@@ -18,10 +21,21 @@ namespace R3Use.Core.Repository
 
         public virtual async Task<T> GetAsync(int id)
         {
-            return await _database.SingleByIdAsync<T>(id);
+            
+            var e = await _database.SingleByIdAsync<T>(id);
+
+            //var sn = _database.StartSnapshot(e);
+            
+            //var x = FluentMappingConfiguration.Scan(a => a.PrimaryKeysNamed(f => f.AssemblyQualifiedName));
+
+            //var pk = x.Config(_database.Mappers).ForType(typeof(T)).GetPrimaryKeyValues(e);
+            //var properties = typeof(T).GetProperties();
+
+
+            return e;
         }
 
-        public virtual async Task Add(Assignment entity)
+        public virtual async Task AddAsync(T entity)
         {
 
             await _database.InsertAsync(entity);
@@ -32,9 +46,10 @@ namespace R3Use.Core.Repository
             return await _database.FetchAsync<T>();
         }
 
-        public async Task SaveAsync(T entity)
+
+        public virtual async void SaveAsync(T t)
         {
-            await _database.InsertAsync(entity);
+            await _database.UpdateAsync(t);
         }
     }
 }

@@ -58,9 +58,11 @@ namespace R3Use.Infrastructure
 
 
             var cmd = Connection.CreateCommand();
-            cmd.CommandText = "CREATE TABLE prospects(Id INTEGER PRIMARY KEY AUTOINCREMENT, Name nvarchar(200));";
+            cmd.CommandText = "CREATE TABLE assignments(Id INTEGER PRIMARY KEY AUTOINCREMENT, Name nvarchar(200));";
             cmd.ExecuteNonQuery();
 
+            cmd.CommandText = "CREATE TABLE periods(Id INTEGER PRIMARY KEY AUTOINCREMENT, Description nvarchar(200), Start TEXT, End TEXT);";
+            cmd.ExecuteNonQuery();
 
             cmd.Dispose();
         }
@@ -72,7 +74,7 @@ namespace R3Use.Infrastructure
 
             var cmd = Connection.CreateCommand();
 
-            cmd.CommandText = "DROP TABLE prospects;";
+            cmd.CommandText = "DROP TABLE assignments;";
             cmd.ExecuteNonQuery();
 
             cmd.Dispose();
