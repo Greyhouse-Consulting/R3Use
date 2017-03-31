@@ -1,30 +1,31 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Linq;
 using System.Threading;
 using LightInject;
 using LightInject.Microsoft.DependencyInjection;
 using Mapster;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using Microsoft.AspNetCore.Hosting.Internal;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using NPoco;
 using NPoco.FluentMappings;
-using R3Use.Core;
 using R3Use.Core.Entities;
 using R3Use.Core.Repository;
 using R3Use.Core.Repository.Contracts;
 using R3Use.Infrastructure;
+using R3Use.Web.Repositories.Things;
 using R3Use.Web.ViewModels;
-using Serilog;
 
 namespace R3Use.Web
 {
     public class Startup
     {
+        private IHostingEnvironment HostingEnvironment { get; set; }
         public Startup(IHostingEnvironment env)
         {
             var builder = new ConfigurationBuilder()
@@ -34,25 +35,30 @@ namespace R3Use.Web
                 .AddEnvironmentVariables();
             Configuration = builder.Build();
 
-            Log.Logger = new LoggerConfiguration()
-                .MinimumLevel.Debug()
-                .Enrich.FromLogContext()
-                .WriteTo.ColoredConsole()
-                .CreateLogger();
-
             HostingEnvironment = env;
         }
 
         public IConfigurationRoot Configuration { get; }
-        private IHostingEnvironment HostingEnvironment { get; set; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
-            
-            // Add framework services.
-            services.AddMvc();
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAllOrigins",
+                    builder =>
+                    {
+                        builder
+                            .AllowAnyOrigin()
+                            .AllowAnyHeader()
+                            .AllowAnyMethod();
+                    });
+            });
 
+            // Add framework services.
+            services.AddSingleton<IThingsRepository, ThingsRepository>();
+            services.AddMvc();
+        
             // Configure Mapster
             ConfigureMapster();
 
@@ -66,7 +72,7 @@ namespace R3Use.Web
 
             container.ScopeManagerProvider = new StandaloneScopeManagerProvider();
 
-            return container.CreateServiceProvider(services);            
+            return container.CreateServiceProvider(services);
         }
 
         private IDatabase CreateDatabaseInstance(IHostingEnvironment env)
@@ -87,7 +93,7 @@ namespace R3Use.Web
                 database = new Database("Server=localhost;Database=npoco;Trusted_Connection=True;", DatabaseType.SqlServer2012,
                     SqlClientFactory.Instance);
             }
-            
+
             var dbFactory = DatabaseFactory.Config(x =>
             {
 
@@ -114,22 +120,31 @@ namespace R3Use.Web
                 .Compile();
 
         }
-
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            loggerFactory.AddSerilog();
+            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
+            loggerFactory.AddDebug();
 
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-                app.UseBrowserLink();
-            }
-            else
-            {
-                app.UseExceptionHandler("/Home/Error");
-            }
+            var angularRoutes = new[] {
+                 "/home",
+                 "/about"
+             };
 
+            app.Use(async (context, next) =>
+            {
+                if (context.Request.Path.HasValue && null != angularRoutes.FirstOrDefault(
+                    (ar) => context.Request.Path.Value.StartsWith(ar, StringComparison.OrdinalIgnoreCase)))
+                {
+                    context.Request.Path = new PathString("/");
+                }
+
+                await next();
+            });
+
+            app.UseCors("AllowAllOrigins");
+
+            app.UseDefaultFiles();
             app.UseStaticFiles();
 
             app.UseMvc(routes =>
