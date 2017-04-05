@@ -32,6 +32,14 @@ namespace R3Use.Web.Controllers
         }
 
 
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            await _assignmentRepository.DeleteAsync(id);
+
+            return Ok();
+        }
+
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] AssignmentModel assignment)
         {
