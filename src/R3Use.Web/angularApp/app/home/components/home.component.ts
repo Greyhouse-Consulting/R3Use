@@ -1,5 +1,5 @@
-import { ThingService } from './../../core/services/thing-data.service';
-import { Thing } from './../../models/thing';
+import { AssignmentService } from './../../core/services/assignment-data.service';
+import { Assignment } from './../../models/assignment';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -10,43 +10,43 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
 
     public message: string;
-    public things: Thing[] = [];
-    public thing: Thing = new Thing();
+    public assignments: Assignment[] = [];
+    public assignment: Assignment = new Assignment();
 
-    constructor(private dataService: ThingService) {
-        this.message = 'Things from the ASP.NET Core API';
+    constructor(private dataService: AssignmentService) {
+        this.message = 'Assignments from the ASP.NET Core API';
     }
 
     ngOnInit() {
-        this.getAllThings();
+        this.getAllAssignments();
     }
 
-    public addThing() {
+    public addAssignment() {
         this.dataService
-            .Add(this.thing)
+            .Add(this.assignment)
             .subscribe(() => {
-                this.getAllThings();
-                this.thing = new Thing();
+                this.getAllAssignments();
+                this.assignment = new Assignment();
             }, (error) => {
                 console.log(error);
             });
     }
 
-    public deleteThing(thing: Thing) {
+    public deleteAssignment(assignment: Assignment) {
         this.dataService
-            .Delete(thing.id)
+            .Delete(assignment.id)
             .subscribe(() => {
-                this.getAllThings();
+                this.getAllAssignments();
             }, (error) => {
                 console.log(error);
             });
     }
 
-    private getAllThings() {
+    private getAllAssignments() {
         this.dataService
             .GetAll()
             .subscribe(
-            data => this.things = data,
+            data => this.assignments = data,
             error => console.log(error),
             () => console.log('Get all complete')
             );

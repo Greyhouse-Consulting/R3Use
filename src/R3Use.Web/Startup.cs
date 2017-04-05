@@ -18,6 +18,7 @@ using R3Use.Core.Entities;
 using R3Use.Core.Repository;
 using R3Use.Core.Repository.Contracts;
 using R3Use.Infrastructure;
+using R3Use.Web.Models;
 using R3Use.Web.Repositories.Things;
 using R3Use.Web.ViewModels;
 
@@ -77,8 +78,7 @@ namespace R3Use.Web
 
         private IDatabase CreateDatabaseInstance(IHostingEnvironment env)
         {
-            var fluentConfig = FluentMappingConfiguration.Configure(new NPocoLabMappings());
-
+ 
             Database database;
             if (env.IsDevelopment())
             {
@@ -96,6 +96,7 @@ namespace R3Use.Web
 
             var dbFactory = DatabaseFactory.Config(x =>
             {
+                var fluentConfig = FluentMappingConfiguration.Configure(new NPocoLabMappings());
 
                 //x.UsingDatabase(() => new Database(new SqlConnection("Server=localhost;Database=npoco;Trusted_Connection=True;")));
                 x.UsingDatabase(() => database);
@@ -107,13 +108,13 @@ namespace R3Use.Web
 
         private void ConfigureMapster()
         {
-            TypeAdapterConfig<Assignment, AssignmentViewModel>
+            TypeAdapterConfig<Assignment, AssignmentModel>
                 .NewConfig()
                 .Map(dest => dest.Name, src => src.Name)
                 .Map(dest => dest.Id, src => src.Id)
                 .Compile();
 
-            TypeAdapterConfig<AssignmentViewModel, Assignment>
+            TypeAdapterConfig<AssignmentModel, Assignment>
                 .NewConfig()
                 .Map(dest => dest.Name, src => src.Name)
                 .Map(dest => dest.Id, src => src.Id)

@@ -7,45 +7,45 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { ThingService } from './../../core/services/thing-data.service';
-import { Thing } from './../../models/thing';
+import { AssignmentService } from './../../core/services/assignment-data.service';
+import { Assignment } from './../../models/assignment';
 import { Component } from '@angular/core';
 var HomeComponent = (function () {
     function HomeComponent(dataService) {
         this.dataService = dataService;
-        this.things = [];
-        this.thing = new Thing();
-        this.message = 'Things from the ASP.NET Core API';
+        this.assignments = [];
+        this.assignment = new Assignment();
+        this.message = 'Assignments from the ASP.NET Core API';
     }
     HomeComponent.prototype.ngOnInit = function () {
-        this.getAllThings();
+        this.getAllAssignments();
     };
-    HomeComponent.prototype.addThing = function () {
+    HomeComponent.prototype.addAssignment = function () {
         var _this = this;
         this.dataService
-            .Add(this.thing)
+            .Add(this.assignment)
             .subscribe(function () {
-            _this.getAllThings();
-            _this.thing = new Thing();
+            _this.getAllAssignments();
+            _this.assignment = new Assignment();
         }, function (error) {
             console.log(error);
         });
     };
-    HomeComponent.prototype.deleteThing = function (thing) {
+    HomeComponent.prototype.deleteAssignment = function (assignment) {
         var _this = this;
         this.dataService
-            .Delete(thing.id)
+            .Delete(assignment.id)
             .subscribe(function () {
-            _this.getAllThings();
+            _this.getAllAssignments();
         }, function (error) {
             console.log(error);
         });
     };
-    HomeComponent.prototype.getAllThings = function () {
+    HomeComponent.prototype.getAllAssignments = function () {
         var _this = this;
         this.dataService
             .GetAll()
-            .subscribe(function (data) { return _this.things = data; }, function (error) { return console.log(error); }, function () { return console.log('Get all complete'); });
+            .subscribe(function (data) { return _this.assignments = data; }, function (error) { return console.log(error); }, function () { return console.log('Get all complete'); });
     };
     return HomeComponent;
 }());
@@ -54,7 +54,7 @@ HomeComponent = __decorate([
         selector: 'home-component',
         templateUrl: 'home.component.html'
     }),
-    __metadata("design:paramtypes", [ThingService])
+    __metadata("design:paramtypes", [AssignmentService])
 ], HomeComponent);
 export { HomeComponent };
 //# sourceMappingURL=home.component.js.map

@@ -1,4 +1,4 @@
-import { ThingService } from './services/thing-data.service';
+import { AssignmentService } from './services/assignment-data.service';
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Configuration } from '../app.constants';
@@ -14,7 +14,7 @@ export class CoreModule {
         return {
             ngModule: CoreModule,
             providers: [
-                ThingService,
+                AssignmentService,
                 Configuration
             ]
         };

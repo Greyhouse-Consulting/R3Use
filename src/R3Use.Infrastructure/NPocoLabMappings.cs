@@ -16,7 +16,7 @@ namespace R3Use.Infrastructure
 
         private void MappPeriod(bool useAutoincrement)
         {
-            For<Period>().PrimaryKey(k => k.Id, useAutoincrement);
+            For<Period>().PrimaryKey(k => k.Id, true);
 
             For<Period>().TableName("periods");
 
@@ -31,7 +31,7 @@ namespace R3Use.Infrastructure
 
         private void MappAssignment(bool useAutoincrement)
         {
-            For<Assignment>().PrimaryKey(k => k.Id, useAutoincrement);
+            For<Assignment>().PrimaryKey(k => k.Id, true);
 
             For<Assignment>().TableName("assignments");
 

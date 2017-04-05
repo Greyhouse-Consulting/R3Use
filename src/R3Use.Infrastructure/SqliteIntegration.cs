@@ -19,7 +19,7 @@ namespace R3Use.Infrastructure
 
             var dbFactory = DatabaseFactory.Config(x =>
             {
-                x.UsingDatabase(() => new Database(Connection));
+                x.UsingDatabase(() => new Database(Connection, DatabaseType.SQLite));
                 x.WithFluentConfig(fluentConfig);
             });
 
@@ -58,10 +58,10 @@ namespace R3Use.Infrastructure
 
 
             var cmd = Connection.CreateCommand();
-            cmd.CommandText = "CREATE TABLE assignments(Id INTEGER PRIMARY KEY AUTOINCREMENT, Name nvarchar(200));";
+            cmd.CommandText = "CREATE TABLE assignments(Id INTEGER PRIMARY KEY, Name nvarchar(200));";
             cmd.ExecuteNonQuery();
 
-            cmd.CommandText = "CREATE TABLE periods(Id INTEGER PRIMARY KEY AUTOINCREMENT, Description nvarchar(200), Start TEXT, End TEXT);";
+            cmd.CommandText = "CREATE TABLE periods(Id INTEGER PRIMARY KEY, Description nvarchar(200), Start TEXT, End TEXT);";
             cmd.ExecuteNonQuery();
 
             cmd.Dispose();
