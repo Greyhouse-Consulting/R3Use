@@ -5,16 +5,14 @@ namespace R3Use.Infrastructure
 {
     public class NPocoLabMappings  : Mappings
     {
-        public NPocoLabMappings(bool testMode = false)
+        public NPocoLabMappings()
         {
-            var useAutoincrement = !testMode;
+            MappAssignment();
 
-            MappAssignment(useAutoincrement);
-
-            MappPeriod(useAutoincrement);
+            MappPeriod();
         }
 
-        private void MappPeriod(bool useAutoincrement)
+        private void MappPeriod()
         {
             For<Period>().PrimaryKey(k => k.Id, true);
 
@@ -29,7 +27,7 @@ namespace R3Use.Infrastructure
             });
         }
 
-        private void MappAssignment(bool useAutoincrement)
+        private void MappAssignment()
         {
             For<Assignment>().PrimaryKey(k => k.Id, true);
 

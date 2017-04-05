@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Mvc;
 using R3Use.Core.Entities;
 using R3Use.Core.Repository.Contracts;
 using R3Use.Web.Models;
-using R3Use.Web.ViewModels;
 
 namespace R3Use.Web.Controllers
 {

@@ -84,21 +84,21 @@ namespace R3Use.Web
             {
                 var s = new SqliteIntegration();
                 s.EnsureSharedConnectionConfigured();
+
                 database = s.CreateDatabase();
 
-                s.RecreateDataBase();
+                s.RecreateSchema();
             }
             else
             {
-                database = new Database("Server=localhost;Database=npoco;Trusted_Connection=True;", DatabaseType.SqlServer2012,
+                database = new Database("Server=localhost;Database=npoco;Trusted_Connection=True;",
+                    DatabaseType.SqlServer2012,
                     SqlClientFactory.Instance);
             }
 
             var dbFactory = DatabaseFactory.Config(x =>
             {
                 var fluentConfig = FluentMappingConfiguration.Configure(new NPocoLabMappings());
-
-                //x.UsingDatabase(() => new Database(new SqlConnection("Server=localhost;Database=npoco;Trusted_Connection=True;")));
                 x.UsingDatabase(() => database);
                 x.WithFluentConfig(fluentConfig);
             });
