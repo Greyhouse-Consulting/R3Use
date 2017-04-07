@@ -39,7 +39,8 @@
     "@angular/compiler-cli": "4.0.0",
     "@angular/platform-server": "4.0.0",
     "bootstrap": "^3.3.7",
-    "ie-shim": "~0.1.0"
+    "ie-shim": "~0.1.0",
+    "@ng-bootstrap/ng-bootstrap": "1.1.16" 
   },
   "devDependencies": {
      "@types/node": "7.0.8",

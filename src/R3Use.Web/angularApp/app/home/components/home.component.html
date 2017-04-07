@@ -28,6 +28,9 @@
                         <td>{{i + 1}}</td>
                         <td>{{assignment.name}}</td>
                         <td class="text-right">
+                            <button type="button" class="btn btn-xs btn-info" (click)="updateAssignment(assignment)" >Edit</button>
+                        </td>
+                        <td class="text-right">
                             <button type="button" class="btn btn-xs btn-danger" (click)="deleteAssignment(assignment)">Delete</button>
                         </td>
                     </tr>

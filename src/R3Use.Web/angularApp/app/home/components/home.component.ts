@@ -51,4 +51,8 @@ export class HomeComponent implements OnInit {
             () => console.log('Get all complete')
             );
     }
+
+    public updateAssignment(assignment: Assignment) {
+        console.log('Updating', assignment.id);
+    }
 }

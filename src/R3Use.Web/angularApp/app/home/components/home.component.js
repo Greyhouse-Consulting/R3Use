@@ -47,6 +47,9 @@ var HomeComponent = (function () {
             .GetAll()
             .subscribe(function (data) { return _this.assignments = data; }, function (error) { return console.log(error); }, function () { return console.log('Get all complete'); });
     };
+    HomeComponent.prototype.updateAssignment = function (assignment) {
+        console.log('Updating', assignment.id);
+    };
     return HomeComponent;
 }());
 HomeComponent = __decorate([
