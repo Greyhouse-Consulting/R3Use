@@ -15,7 +15,7 @@ namespace R3Use.Infrastructure
 
         public Database CreateDatabase()
         {
-            var fluentConfig = FluentMappingConfiguration.Configure(new NPocoLabMappings(true));
+            var fluentConfig = FluentMappingConfiguration.Configure(new NPocoLabMappings());
 
             var dbFactory = DatabaseFactory.Config(x =>
             {
@@ -29,7 +29,7 @@ namespace R3Use.Infrastructure
         protected void Setup()
         {
             EnsureSharedConnectionConfigured();
-            RecreateDataBase();
+            RecreateSchema();
         }
 
         protected void TearDown()
@@ -50,7 +50,7 @@ namespace R3Use.Infrastructure
             Connection.Open();
             //}
         }
-        public void RecreateDataBase()
+        public void RecreateSchema()
         {
             Console.WriteLine("----------------------------");
             Console.WriteLine("Using SQLite In-Memory DB   ");
