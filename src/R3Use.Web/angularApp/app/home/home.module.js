@@ -10,6 +10,7 @@ import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { HomeRoutes } from './home.routes';
 import { HomeComponent } from './components/home.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
 var HomeModule = (function () {
     function HomeModule() {
     }
@@ -21,7 +22,9 @@ HomeModule = __decorate([
             CommonModule,
             FormsModule,
             HttpModule,
-            HomeRoutes
+            HomeRoutes,
+            ModalModule.forRoot(),
+            ModalModule
         ],
         declarations: [
             HomeComponent

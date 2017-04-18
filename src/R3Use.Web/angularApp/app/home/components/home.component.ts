@@ -2,6 +2,7 @@ import { AssignmentService } from './../../core/services/assignment-data.service
 import { Assignment } from './../../models/assignment';
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
     selector: 'home-component',
     templateUrl: 'home.component.html'
