@@ -53,5 +53,27 @@ namespace R3Use.Web.Controllers
 
             return Ok();
         }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutAsync(int id, [FromBody] AssignmentModel assignmentModel)
+        {
+
+            if (ModelState.IsValid)
+            {
+                var assignment = await _assignmentRepository.GetAsync(id);
+
+                if (assignment == null)
+                    return NotFound(id);
+
+
+                assignment.Name = assignmentModel.Name;
+
+                await _assignmentRepository.UpdateAsync(assignment);
+
+
+            }
+
+            return Ok();
+        }
      }
 }

@@ -13,5 +13,7 @@ namespace R3Use.Core.Repository.Contracts
 
         Task DeleteAsync(int id);
 
+
+        Task UpdateAsync(T t);
     }
 }

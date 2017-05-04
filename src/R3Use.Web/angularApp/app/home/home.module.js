@@ -10,6 +10,7 @@ import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { HomeRoutes } from './home.routes';
 import { HomeComponent } from './components/home.component';
+import { EditassignmentComponent } from './components/edit.assignment.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 var HomeModule = (function () {
     function HomeModule() {
@@ -27,10 +28,12 @@ HomeModule = __decorate([
             ModalModule
         ],
         declarations: [
-            HomeComponent
+            HomeComponent,
+            EditassignmentComponent
         ],
         exports: [
-            HomeComponent
+            HomeComponent,
+            EditassignmentComponent
         ]
     })
 ], HomeModule);

@@ -34,10 +34,9 @@ export class AssignmentService {
         return this.http.post(this.actionUrl, toAdd, { headers: this.headers }).map(res => <Assignment>res.json());
     }
 
-    public Update = (id: number, itemToUpdate: any): Observable<Assignment> => {
+    public Update = (id: number, itemToUpdate: any): Observable<any> => {
         return this.http
-            .put(this.actionUrl + id, JSON.stringify(itemToUpdate), { headers: this.headers })
-            .map(res => <Assignment>res.json());
+            .put(this.actionUrl + id, JSON.stringify(itemToUpdate), { headers: this.headers });
     }
 
     public Delete = (id: number): Observable<any> => {

@@ -47,6 +47,11 @@ namespace R3Use.Core.Repository
             await _database.DeleteAsync(p);
         }
 
+        public async Task UpdateAsync(T t)
+        {
+            await _database.UpdateAsync(t);
+        }
+
         public virtual async Task<IList<T>> AllAsync()
         {
             return await _database.FetchAsync<T>();

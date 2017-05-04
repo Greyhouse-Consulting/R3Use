@@ -28,8 +28,7 @@ var AssignmentService = (function () {
         };
         this.Update = function (id, itemToUpdate) {
             return _this.http
-                .put(_this.actionUrl + id, JSON.stringify(itemToUpdate), { headers: _this.headers })
-                .map(function (res) { return res.json(); });
+                .put(_this.actionUrl + id, JSON.stringify(itemToUpdate), { headers: _this.headers });
         };
         this.Delete = function (id) {
             return _this.http.delete(_this.actionUrl + id);

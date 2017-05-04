@@ -5,5 +5,6 @@ namespace R3Use.Core.Repository.Contracts
 {
     public interface IAssignmentRepository : IRepository<Assignment>
     {
+
     }
 }

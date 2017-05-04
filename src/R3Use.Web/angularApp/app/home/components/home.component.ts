@@ -1,7 +1,7 @@
 import { AssignmentService } from './../../core/services/assignment-data.service';
 import { Assignment } from './../../models/assignment';
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ModalDirective } from 'ngx-bootstrap/modal';
 
 @Component({
     selector: 'home-component',
@@ -9,11 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class HomeComponent implements OnInit {
+    @ViewChild('childModal') public childModal: ModalDirective;
+
 
     public message: string;
     public assignments: Assignment[] = [];
     public assignment: Assignment = new Assignment();
 
+    public selectedAssignment: Assignment = new Assignment();
+
+    
     constructor(private dataService: AssignmentService) {
         this.message = 'Assignments from the ASP.NET Core API';
     }
@@ -55,5 +60,28 @@ export class HomeComponent implements OnInit {
 
     public updateAssignment(assignment: Assignment) {
         console.log('Updating', assignment.id);
+    }
+
+    private onUpdated() {
+        this.getAllAssignments();
+    }
+
+    public showEdit(assignment: Assignment) {
+
+        this.selectedAssignment = { ...assignment };
+        this.childModal.show();
+    }
+
+    public hideChildModal(): void {
+
+        this.dataService
+            .Update(this.selectedAssignment.id, this.selectedAssignment)
+            .subscribe(() => {
+                this.getAllAssignments();
+            }, (error) => {
+                console.log(error);
+            });
+
+        this.childModal.hide();
     }
 }
