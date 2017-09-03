@@ -59,7 +59,18 @@
                         <input type="text" class="form-control" id="exampleInputAssignment" placeholder="Name of the assignment ..." name="assignment" [(ngModel)]="selectedAssignment.name"
                                required>
                     </div>
+                    
                 </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" (click)="hideChildModal()"
+                            >Close</button>
+                    <button type="button" class="btn btn-primary" aria-label="Close" (click)="saveAndHide()">
+                        <span aria-hidden="true">Save</span>
+                    </button>
+
+
+                </div>
+                
             </div>
         </div>
     </div>

@@ -19,16 +19,15 @@ namespace NPoco.Integration.Tests
             {
                 var repo = new AssignmentRepository(db);
 
-                await repo.AddAsync(new Assignment
+                repo.Save(new Assignment
                 {
-                    Id = 200,
                     Name = "Name"
                 });
 
-                var i = await repo.GetAsync(200);
+                var i = await repo.AllAsync();
 
-                Assert.Equal(200, i.Id);
-                Assert.Equal("Name", i.Name);
+                Assert.Equal("Name", i[0].Name);
+                Assert.Equal(1, i.Count);
             }
 
             TearDown();
@@ -45,20 +44,28 @@ namespace NPoco.Integration.Tests
 
                 var assignment = new Assignment
                 {
-                    Id = 200,
                     Name = "Name"
                 };
+
                 var start = new DateTime(2017, 01, 01);
                 var end = new DateTime(2017, 02, 02);
 
-                assignment.AddPeriod(new Period { Description = "Desc", Start = start, End = end });
+                var period = new Period { Description = "Desc", Start = start, End = end };
 
-                await repo.AddAsync(assignment);
+                assignment.AddPeriod(period);
 
-                var i = await repo.GetAsync(200);
 
-                Assert.Equal(200, i.Id);
-                Assert.Equal("Name", i.Name);
+                repo.Save(assignment);
+                period.AssignmentId = assignment.Id;
+                db.Save(period);
+
+                var all = db.FetchOneToMany<Assignment>(x => x.Periods,
+                    "select a.*, p.* from assignments a inner join periods p where a.id = p.assignmentid");
+
+                var i = await repo.AllAsync();
+
+                Assert.Equal("Name", i[0].Name);
+                Assert.Equal(1, i[0].Periods.Count);
             }
 
             TearDown();

@@ -67,7 +67,7 @@ var HomeComponent = (function () {
         this.selectedAssignment = __assign({}, assignment);
         this.childModal.show();
     };
-    HomeComponent.prototype.hideChildModal = function () {
+    HomeComponent.prototype.saveAndHide = function () {
         var _this = this;
         this.dataService
             .Update(this.selectedAssignment.id, this.selectedAssignment)
@@ -76,6 +76,9 @@ var HomeComponent = (function () {
         }, function (error) {
             console.log(error);
         });
+        this.childModal.hide();
+    };
+    HomeComponent.prototype.hideChildModal = function () {
         this.childModal.hide();
     };
     return HomeComponent;

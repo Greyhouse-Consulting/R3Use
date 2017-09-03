@@ -5,7 +5,7 @@ using NPoco.FluentMappings;
 
 namespace R3Use.Infrastructure
 {
-    public  class SqliteIntegration
+    public class SqliteIntegration
     {
 
 
@@ -56,15 +56,15 @@ namespace R3Use.Infrastructure
             Console.WriteLine("Using SQLite In-Memory DB   ");
             Console.WriteLine("----------------------------");
 
+            using (var cmd = Connection.CreateCommand())
+            {
 
-            var cmd = Connection.CreateCommand();
-            cmd.CommandText = "CREATE TABLE assignments(Id INTEGER PRIMARY KEY, Name nvarchar(200));";
-            cmd.ExecuteNonQuery();
+                cmd.CommandText = "CREATE TABLE assignments(Id INTEGER PRIMARY KEY, Name nvarchar(200));";
+                cmd.ExecuteNonQuery();
 
-            cmd.CommandText = "CREATE TABLE periods(Id INTEGER PRIMARY KEY, Description nvarchar(200), Start TEXT, End TEXT);";
-            cmd.ExecuteNonQuery();
-
-            cmd.Dispose();
+                cmd.CommandText = "CREATE TABLE periods(Id INTEGER PRIMARY KEY, AssignmentId INTEGER, Description nvarchar(200), Start TEXT, End TEXT);";
+                cmd.ExecuteNonQuery();
+            }
         }
 
         public void CleanupDataBase()
@@ -72,12 +72,11 @@ namespace R3Use.Infrastructure
 
             if (Connection == null) return;
 
-            var cmd = Connection.CreateCommand();
-
-            cmd.CommandText = "DROP TABLE assignments;";
-            cmd.ExecuteNonQuery();
-
-            cmd.Dispose();
+            using (var cmd = Connection.CreateCommand())
+            {
+                cmd.CommandText = "DROP TABLE assignments;";
+                cmd.ExecuteNonQuery();
+            }
         }
 
         public virtual void Dispose()

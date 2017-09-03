@@ -35,10 +35,16 @@ namespace R3Use.Core.Repository
             return e;
         }
 
-        public virtual async Task AddAsync(T entity)
+        public virtual async Task<IList<T>> All()
         {
 
+            return await _database.FetchAsync<T>();
+        }
+
+        public virtual async Task AddAsync(T entity)
+        {
             await _database.InsertAsync(entity);
+
         }
 
         public async  Task DeleteAsync(int id)
@@ -58,9 +64,9 @@ namespace R3Use.Core.Repository
         }
 
 
-        public virtual async void SaveAsync(T t)
+        public virtual void Save(T t)
         {
-            await _database.UpdateAsync(t);
+            _database.Save(t);
         }
     }
 }

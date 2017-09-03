@@ -71,9 +71,7 @@ export class HomeComponent implements OnInit {
         this.selectedAssignment = { ...assignment };
         this.childModal.show();
     }
-
-    public hideChildModal(): void {
-
+    public saveAndHide() {
         this.dataService
             .Update(this.selectedAssignment.id, this.selectedAssignment)
             .subscribe(() => {
@@ -81,6 +79,13 @@ export class HomeComponent implements OnInit {
             }, (error) => {
                 console.log(error);
             });
+
+        this.childModal.hide();
+        
+    }
+
+    public hideChildModal(): void {
+
 
         this.childModal.hide();
     }

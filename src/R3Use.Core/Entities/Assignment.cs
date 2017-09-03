@@ -14,7 +14,7 @@ namespace R3Use.Core.Entities
 
         public string Name { get; set; }
 
-        public IList<Period> Periods { get; set; }
+        public List<Period> Periods { get; set; }
 
 
         public void AddPeriod(Period period)
