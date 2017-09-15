@@ -65277,7 +65277,7 @@ var AppComponent = (function () {
 /* 465 */
 /***/ (function(module, exports) {
 
-module.exports = "<!--<navigation></navigation>-->\r\n\r\n<div class=\"container\">\r\n\r\n    <router-outlet></router-outlet>\r\n\r\n    <!--<customfooter></customfooter>-->\r\n</div>"
+module.exports = "<app-navigation></app-navigation>\r\n\r\n<div class=\"container\">\r\n\r\n    <router-outlet></router-outlet>\r\n\r\n    <app-custom-footer></app-custom-footer>\r\n</div>"
 
 /***/ }),
 /* 466 */
@@ -73684,7 +73684,7 @@ var NavigationComponent = (function () {
 /* 503 */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-inverse navbar-fixed-top\">\r\n    <div class=\"container\">\r\n        <div class=\"navbar-header\">\r\n            <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navbar\" aria-expanded=\"false\"\r\n                    aria-controls=\"navbar\">\r\n                <span class=\"sr-only\">Toggle navigation</span>\r\n                <span class=\"icon-bar\"></span>\r\n                <span class=\"icon-bar\"></span>\r\n                <span class=\"icon-bar\"></span>\r\n            </button>\r\n            <a class=\"navbar-brand\" [routerLink]=\"['/home']\"><em>ASP.NET Core Angular Webpack</em></a>\r\n        </div>\r\n        <div id=\"navbar\" class=\"collapse navbar-collapse\">\r\n            <ul class=\"nav navbar-nav\">\r\n                <li><a [routerLink]=\"['/home']\">Home</a></li>\r\n                <li><a [routerLink]=\"['/about']\">About</a></li>\r\n            </ul>\r\n            <ul class=\"nav navbar-nav navbar-right\">\r\n                <li>\r\n                    <a href=\"https://twitter.com/damien_bod\"><img src=\"assets/damienbod.jpg\" height=\"30\" /></a>\r\n                </li>\r\n                <li>\r\n                    <a href=\"https://twitter.com/FabianGosebrink\"><img src=\"assets/fabianGosebrink.jpg\" height=\"30\" /></a>\r\n                </li>\r\n                <li>\r\n                    <a href=\"https://twitter.com/robisim74\"><img src=\"assets/RobertoSimonetti.jpg\" height=\"30\" /></a>\r\n                </li>\r\n            </ul>\r\n        </div>\r\n    </div>\r\n</nav>"
+module.exports = "<nav class=\"navbar navbar-inverse navbar-fixed-top\">\r\n    <div class=\"container\">\r\n        <div class=\"navbar-header\">\r\n            <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navbar\" aria-expanded=\"false\"\r\n                    aria-controls=\"navbar\">\r\n                <span class=\"sr-only\">Toggle navigation</span>\r\n                <span class=\"icon-bar\"></span>\r\n                <span class=\"icon-bar\"></span>\r\n                <span class=\"icon-bar\"></span>\r\n            </button>\r\n            <a class=\"navbar-brand\" [routerLink]=\"['/home']\"><em>Assignments management</em></a>\r\n        </div>\r\n        <div id=\"navbar\" class=\"collapse navbar-collapse\">\r\n            <ul class=\"nav navbar-nav\">\r\n                <li><a [routerLink]=\"['/home']\">Home</a></li>\r\n                <li><a [routerLink]=\"['/about']\">About</a></li>\r\n            </ul>\r\n            <ul class=\"nav navbar-nav navbar-right\">\r\n\r\n            </ul>\r\n        </div>\r\n    </div>\r\n</nav>"
 
 /***/ })
 ],[448]);
