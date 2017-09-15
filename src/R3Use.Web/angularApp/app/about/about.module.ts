@@ -17,3 +17,4 @@ import { AboutComponent } from './components/about.component';
 })
 
 export class AboutModule { }
+

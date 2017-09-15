@@ -4,9 +4,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-import { Component } from '@angular/core';
-import './app.component.scss';
-import '../style/app.scss';
+import { Component, ViewEncapsulation } from '@angular/core';
 var AppComponent = (function () {
     function AppComponent() {
     }
@@ -14,8 +12,10 @@ var AppComponent = (function () {
 }());
 AppComponent = __decorate([
     Component({
-        selector: 'my-app',
-        templateUrl: 'app.component.html'
+        selector: 'app-component',
+        templateUrl: './app.component.html',
+        styleUrls: ['./app.component.scss'],
+        encapsulation: ViewEncapsulation.None
     })
 ], AppComponent);
 export { AppComponent };

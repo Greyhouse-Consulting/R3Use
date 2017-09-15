@@ -6,11 +6,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { SharedModule } from './shared/shared.module';
+import { AppComponent } from './app.component';
+import { AppRoutes } from './app.routes';
 import { CoreModule } from './core/core.module';
 import { HomeModule } from './home/home.module';
-import { AppRoutes } from './app.routes';
-import { AppComponent } from './app.component';
+import { SharedModule } from './shared/shared.module';
 var AppModule = (function () {
     function AppModule() {
     }

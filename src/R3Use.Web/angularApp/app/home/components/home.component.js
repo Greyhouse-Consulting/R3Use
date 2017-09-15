@@ -89,7 +89,7 @@ __decorate([
 ], HomeComponent.prototype, "childModal", void 0);
 HomeComponent = __decorate([
     Component({
-        selector: 'home-component',
+        selector: 'app-home-component',
         templateUrl: 'home.component.html'
     }),
     __metadata("design:paramtypes", [AssignmentService])

@@ -40,7 +40,7 @@ __decorate([
 ], EditassignmentComponent.prototype, "modal", void 0);
 EditassignmentComponent = __decorate([
     Component({
-        selector: 'edit-assignment-component',
+        selector: 'app-edit-assignment-component',
         templateUrl: 'edit.assignment.component.html'
     }),
     __metadata("design:paramtypes", [AssignmentService])

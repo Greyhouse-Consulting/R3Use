@@ -4,7 +4,7 @@ import { Component, OnInit, EventEmitter, Input, Output, ViewChild, ElementRef }
 import { ModalModule } from 'ngx-bootstrap/modal';
 
 @Component({
-    selector: 'edit-assignment-component',
+    selector: 'app-edit-assignment-component',
     templateUrl: 'edit.assignment.component.html'
 })
 
@@ -23,8 +23,8 @@ export class EditassignmentComponent implements OnInit {
     constructor(private dataService: AssignmentService) {
         this.editAssignment = new Assignment();
 
-        //this.editAssignment.id = this.assignment.id;
-        //this.editAssignment.name = this.assignment.name;
+         // this.editAssignment.id = this.assignment.id;
+        // this.editAssignment.name = this.assignment.name;
     }
 
     ngOnInit() {
@@ -41,7 +41,7 @@ export class EditassignmentComponent implements OnInit {
             this.modal.show();
     }
 
-    //public addAssignment() {
+    // public addAssignment() {
     //    this.dataService
     //        .Add(this.assignment)
     //        .subscribe(() => {
@@ -50,9 +50,9 @@ export class EditassignmentComponent implements OnInit {
     //        }, (error) => {
     //            console.log(error);
     //        });
-    //}
+    // }
 
-    //public deleteAssignment(assignment: Assignment) {
+    // public deleteAssignment(assignment: Assignment) {
     //    this.dataService
     //        .Delete(assignment.id)
     //        .subscribe(() => {
@@ -60,9 +60,9 @@ export class EditassignmentComponent implements OnInit {
     //        }, (error) => {
     //            console.log(error);
     //        });
-    //}
+    // }
 
-    //private getAllAssignments() {
+    // private getAllAssignments() {
     //    this.dataService
     //        .GetAll()
     //        .subscribe(
@@ -70,9 +70,10 @@ export class EditassignmentComponent implements OnInit {
     //        error => console.log(error),
     //        () => console.log('Get all complete')
     //        );
-    //}
+    // }
 
-    //public updateAssignment(assignment: Assignment) {
+    // public updateAssignment(assignment: Assignment) {
     //    console.log('Updating', assignment.id);
-    //}
+    // }
 }
+

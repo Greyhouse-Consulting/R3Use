@@ -4,7 +4,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 
 @Component({
-    selector: 'home-component',
+    selector: 'app-home-component',
     templateUrl: 'home.component.html'
 })
 
@@ -18,7 +18,6 @@ export class HomeComponent implements OnInit {
 
     public selectedAssignment: Assignment = new Assignment();
 
-    
     constructor(private dataService: AssignmentService) {
         this.message = 'Assignments from the ASP.NET Core API';
     }
@@ -81,7 +80,6 @@ export class HomeComponent implements OnInit {
             });
 
         this.childModal.hide();
-        
     }
 
     public hideChildModal(): void {

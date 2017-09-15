@@ -12,7 +12,7 @@ var NavigationComponent = (function () {
 }());
 NavigationComponent = __decorate([
     Component({
-        selector: 'navigation',
+        selector: 'app-navigation',
         templateUrl: 'navigation.component.html'
     })
 ], NavigationComponent);

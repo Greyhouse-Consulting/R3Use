@@ -13,8 +13,8 @@ var CustomFooterComponent = (function () {
 }());
 CustomFooterComponent = __decorate([
     Component({
-        selector: 'customfooter',
-        templateUrl: 'customfooter.component.html'
+        selector: 'app-custom-footer',
+        templateUrl: './customfooter.component.html'
     })
 ], CustomFooterComponent);
 export { CustomFooterComponent };

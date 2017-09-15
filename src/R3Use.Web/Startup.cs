@@ -64,7 +64,7 @@ namespace R3Use.Web
             ConfigureMapster();
 
             // Setup IoC
-            var container = new ServiceContainer();
+            var container = new ServiceContainer(new ContainerOptions() { EnablePropertyInjection = false });
             container.Register<IAssignmentRepository, AssignmentRepository>();
             container.RegisterInstance(CreateDatabaseInstance(HostingEnvironment));
 
