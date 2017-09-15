@@ -73650,7 +73650,7 @@ var CustomFooterComponent = (function () {
 /* 501 */
 /***/ (function(module, exports) {
 
-module.exports = "<footer class=\"footer\">\r\n    <p>\r\n        <a href=\"https://twitter.com/FabianGosebrink\">Fabian Gosebrink</a>&nbsp;Blog: <a href=\"http://offering.solutions\">Offering.Solutions</a>        &amp;\r\n        <a href=\"https://twitter.com/damien_bod\">Damien Bowden</a>&nbsp;Blog: <a href=\"https://damienbod.com/\">Software Engineering</a>        &amp;\r\n        <a href=\"https://twitter.com/robisim74\">Roberto Simonetti</a> &copy; {{currentYear}}\r\n    </p>\r\n</footer>"
+module.exports = "<footer class=\"footer\">\r\n    <p>\r\n    </p>\r\n</footer>"
 
 /***/ }),
 /* 502 */
